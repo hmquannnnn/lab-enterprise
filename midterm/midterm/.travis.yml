@@ -1,0 +1,11 @@
+language: java
+jdk:
+  - openjdk18
+script:
+  - ./mvnw clean install
+  - ./mvnw deploy jib:build -P deploy-docker
+
+before_install:
+  - echo Quanminh2003 | docker login -u hmquannnnn --password-stdin
+  - docker pull openjdk:18-jre-slim-sid
+
